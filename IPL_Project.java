@@ -10,10 +10,7 @@ public class IPL_Project {
             CSVReader csvReader = new CSVReader(filereader);
             String[] nextRecord;
             while ((nextRecord = csvReader.readNext()) != null) {
-                for (String cell : nextRecord) {
-                    System.out.print(cell + "\t");
-                }
-                System.out.println();
+                   System.out.println(nextRecord[1]);
             }
         }
         catch (Exception e) {
