@@ -4,7 +4,7 @@ import java.io.FileReader;
 import java.util.HashMap;
 
 public class IPL_Project {
-    void Question1(){
+    void question1(){
         HashMap<String,Integer>numberof_match=new HashMap<>();
         try {
             FileReader filereader = new FileReader("C:/Users/pkesharwani/Desktop/IPL_Project/matches.csv");
@@ -26,7 +26,7 @@ public class IPL_Project {
         }
         System.out.println(numberof_match);
     }
-    void Question2(){
+    void question2(){
         int totalnormalmatch=0;
         try {
             FileReader filereader = new FileReader("C:/Users/pkesharwani/Desktop/IPL_Project/matches.csv");
@@ -46,8 +46,7 @@ public class IPL_Project {
         }
         System.out.println(totalnormalmatch);
     }
-
-    public static void main(String args[]) {
+    void question3(){
         HashMap<String,Integer>getExtranunbyTeam_2016=new HashMap<>();
         try {
             FileReader filereader = new FileReader("C:/Users/pkesharwani/Desktop/IPL_Project/matches.csv");
@@ -58,19 +57,31 @@ public class IPL_Project {
             csvReader_matches.readNext();
             csvReader_deliveries.readNext();
             while ((nextRecord = csvReader_deliveries.readNext()) != null) {
-               if(Integer.parseInt(nextRecord[0])-577>=0  ) {
-                   if (getExtranunbyTeam_2016.containsKey(nextRecord[2])) {
-                       getExtranunbyTeam_2016.put(nextRecord[2], getExtranunbyTeam_2016.get(nextRecord[2]) + Integer.valueOf(nextRecord[16]));
-                   } else {
-                       getExtranunbyTeam_2016.put(nextRecord[2], 0);
-                   }
-               }
-               }
+                if(Integer.parseInt(nextRecord[0])-577>=0  ) {
+                    break;
+                }
+                csvReader_deliveries.readNext();
+            }
+            while ((nextRecord = csvReader_deliveries.readNext()) != null) {
+                //System.out.println(Integer.valueOf(nextRecord[16])+nextRecord[2]);
+                // break;
+                if(Integer.parseInt(nextRecord[0])-577>=0  ) {
+                    if (getExtranunbyTeam_2016.containsKey(nextRecord[2])) {
+                        getExtranunbyTeam_2016.put(nextRecord[2], getExtranunbyTeam_2016.get(nextRecord[2]) + Integer.valueOf(nextRecord[16]));
+                    } else {
+                        getExtranunbyTeam_2016.put(nextRecord[2], 0);
+                    }
+                    //break;
+                }
+            }
         }
         catch (Exception e) {
             e.printStackTrace();
         }
         System.out.println(getExtranunbyTeam_2016);
+    }
+    public static void main(String args[]) {
+        
     }
 }
 
