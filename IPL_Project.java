@@ -80,8 +80,56 @@ public class IPL_Project {
         }
         System.out.println(getExtranunbyTeam_2016);
     }
+    void totalmatchatgivenvenu(){// total number of match played in given venu
+        int countmatch=0;
+        try {
+            FileReader filereader = new FileReader("C:/Users/pkesharwani/Desktop/IPL_Project/matches.csv");
+            CSVReader csvReader = new CSVReader(filereader);
+            String[] nextRecord;
+            csvReader.readNext();
+
+            while ((nextRecord = csvReader.readNext()) != null) {
+                // System.out.println(nextRecord[14]);
+                if(nextRecord[14].equals("Rajiv Gandhi International Stadium, Uppal")){
+                    countmatch++;
+                }
+
+            }
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+        System.out.println(countmatch);
+    }
     public static void main(String args[]) {
-        
+
+
+//IPL_Project i=new IPL_Project();
+//i.question2();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     }
 }
 
