@@ -48,5 +48,29 @@ public class IPL_Project {
     }
 
     public static void main(String args[]) {
+        HashMap<String,Integer>getExtranunbyTeam_2016=new HashMap<>();
+        try {
+            FileReader filereader = new FileReader("C:/Users/pkesharwani/Desktop/IPL_Project/matches.csv");
+            CSVReader csvReader_matches = new CSVReader(filereader);
+            FileReader file = new FileReader("C:/Users/pkesharwani/Desktop/IPL_Project/deliveries.csv");
+            CSVReader csvReader_deliveries = new CSVReader(file);
+            String[] nextRecord;
+            csvReader_matches.readNext();
+            csvReader_deliveries.readNext();
+            while ((nextRecord = csvReader_deliveries.readNext()) != null) {
+               if(Integer.parseInt(nextRecord[0])-577>=0  ) {
+                   if (getExtranunbyTeam_2016.containsKey(nextRecord[2])) {
+                       getExtranunbyTeam_2016.put(nextRecord[2], getExtranunbyTeam_2016.get(nextRecord[2]) + Integer.valueOf(nextRecord[16]));
+                   } else {
+                       getExtranunbyTeam_2016.put(nextRecord[2], 0);
+                   }
+               }
+               }
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+        System.out.println(getExtranunbyTeam_2016);
     }
 }
+
